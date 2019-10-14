@@ -1,5 +1,6 @@
 import kivy
 from kivy.app import App
+from kivy.graphics import Color
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -10,11 +11,20 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.uix.scrollview import ScrollView
 from kivy.config import Config
+from kivy.graphics.instructions import Instruction
+from kivy.graphics.instructions import VertexInstruction
+from kivy.graphics.vertex_instructions import Rectangle
 import random
 import sys
 import os
 
+Config.set("kivy", "default_font", ["Roboto", r"C:\Users\Cliff\AppData\Local\Microsoft\Windows\Fonts\Roboto-Light.ttf"])
+Config.write()
+
 winMessage = ""
+c = Color(110, 7.4, 31.8, mode="hsv")
+Window.clearcolor = (0.30,0.32,0.29,1)
+
 
 class BattleInputs(GridLayout):
     def __init__(self, **kwargs):
@@ -67,7 +77,7 @@ class BattleInputs(GridLayout):
         self.add_widget(self.calvary2)
 
         self.add_widget(Label(text="Knights"))
-        self.knights1 = TextInput(text="", multiline=False)
+        self.knights1 = TextInput(text="", multiline=False, border=(30,30,30,30))
         self.add_widget(self.knights1)
 
         self.add_widget(Label(text="Knights"))
@@ -76,9 +86,13 @@ class BattleInputs(GridLayout):
 
         self.layout = BoxLayout(orientation="vertical")
         self.add_widget(self.layout)
-        self.submit = Button(text="Submit", size_hint=(4, 1), font_size=20)
+        self.submit = Button(background_normal=("button.png"), text="Submit", size_hint=(4, 1), font_size=20)
         self.layout.add_widget(self.submit)
         self.submit.bind(on_press=self.submit_button)
+
+    def on_key_down(self,instance,keyboard,keycode,text,modifiers):
+        if keycode == 40:
+            self.submit_button(None)
 
     def submit_button(self, instance):
         f1 = int(self.swordsmen1.text)
@@ -167,6 +181,12 @@ class BattleInputs(GridLayout):
             army1kcas = random.randint(1,int(basecas1))
             army1totalcas = army1fcas + army1acas + army1ccas + army1pcas + army1kcas
             army1rem = army1total - army1totalcas
+            if army1rem > 0:
+                pass
+            elif army1rem == 0:
+                pass
+            else:
+                army1rem = 0
 
         for i in range(1):
             army2fcas = random.randint(1,int(basecas2))
@@ -176,6 +196,12 @@ class BattleInputs(GridLayout):
             army2kcas = random.randint(1,int(basecas2))
             army2totalcas = army2fcas + army2acas + army2ccas + army2pcas + army2kcas
             army2rem = army2total - army2totalcas
+            if army2rem > 0:
+                pass
+            elif army2rem == 0:
+                pass
+            else:
+                army2rem = 0
 
         finalScore = advTotal1 + advTotal2 + 1
         for i in range(1):
@@ -271,6 +297,8 @@ class Application(App):
         self.screen_manager.add_widget(screen)
 
         self.title = "Feuds Battlemanager V0.1"
+
+        icon = "icon.ico"
 
         #Window.borderless=True
 
