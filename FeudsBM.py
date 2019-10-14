@@ -18,12 +18,13 @@ import random
 import sys
 import os
 
-Config.set("kivy", "default_font", ["Roboto", r"C:\Users\Cliff\AppData\Local\Microsoft\Windows\Fonts\Roboto-Light.ttf"])
+Config.set("kivy", "default_font", ["Roboto", r"C:\Users\Cliff\AppData\Local\Microsoft\Windows\Fonts\Roboto-Medium.ttf"])
 Config.write()
 
 winMessage = ""
 c = Color(110, 7.4, 31.8, mode="hsv")
-Window.clearcolor = (0.30,0.32,0.29,1)
+Window.clearcolor = (.19, .20, .23, 1)
+Window.size = (1250, 680)
 
 
 class BattleInputs(GridLayout):
@@ -45,48 +46,48 @@ class BattleInputs(GridLayout):
         self.add_widget(Label(text="", size_hint=(0,0)))
 
         self.add_widget(Label(text="Swordsmen:"))
-        self.swordsmen1 = TextInput(text="", multiline=False)
+        self.swordsmen1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.swordsmen1)
 
         self.add_widget(Label(text="Swordsmen:"))
-        self.swordsmen2 = TextInput(text="", multiline=False)
+        self.swordsmen2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.swordsmen2)
 
         self.add_widget(Label(text="Archers:"))
-        self.archers1 = TextInput(text="", multiline=False)
+        self.archers1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.archers1)
 
-        self.add_widget(Label(text="Archers"))
-        self.archers2 = TextInput(text="", multiline=False)
+        self.add_widget(Label(text="Archers:"))
+        self.archers2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.archers2)
 
-        self.add_widget(Label(text="Pikemen"))
-        self.pikemen1 = TextInput(text="", multiline=False)
+        self.add_widget(Label(text="Pikemen:"))
+        self.pikemen1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.pikemen1)
 
-        self.add_widget(Label(text="Pikemen"))
-        self.pikemen2 = TextInput(text="", multiline=False)
+        self.add_widget(Label(text="Pikemen:"))
+        self.pikemen2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.pikemen2)
 
-        self.add_widget(Label(text="Calvary"))
-        self.calvary1 = TextInput(text="", multiline=False)
+        self.add_widget(Label(text="Calvary:"))
+        self.calvary1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.calvary1)
 
-        self.add_widget(Label(text="Calvary"))
-        self.calvary2 = TextInput(text="", multiline=False)
+        self.add_widget(Label(text="Calvary:"))
+        self.calvary2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.calvary2)
 
-        self.add_widget(Label(text="Knights"))
-        self.knights1 = TextInput(text="", multiline=False, border=(30,30,30,30))
+        self.add_widget(Label(text="Knights:"))
+        self.knights1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.knights1)
 
-        self.add_widget(Label(text="Knights"))
-        self.knights2 = TextInput(text="", multiline=False)
+        self.add_widget(Label(text="Knights:"))
+        self.knights2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
         self.add_widget(self.knights2)
 
         self.layout = BoxLayout(orientation="vertical")
         self.add_widget(self.layout)
-        self.submit = Button(background_normal=("button.png"), text="Submit", size_hint=(4, 1), font_size=20)
+        self.submit = Button(background_normal=("button.png"), background_down=("buttonactive.png"), text="[color=363840]Submit[/color]", markup=True, size_hint=(4, 1), font_size=20)
         self.layout.add_widget(self.submit)
         self.submit.bind(on_press=self.submit_button)
 
