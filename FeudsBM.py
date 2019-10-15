@@ -4,6 +4,8 @@ from kivy.graphics import Color
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -46,48 +48,48 @@ class BattleInputs(GridLayout):
         self.add_widget(Label(text="", size_hint=(0,0)))
 
         self.add_widget(Label(text="Swordsmen:"))
-        self.swordsmen1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.swordsmen1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.swordsmen1)
 
         self.add_widget(Label(text="Swordsmen:"))
-        self.swordsmen2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.swordsmen2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.swordsmen2)
 
         self.add_widget(Label(text="Archers:"))
-        self.archers1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.archers1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.archers1)
 
         self.add_widget(Label(text="Archers:"))
-        self.archers2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.archers2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.archers2)
 
         self.add_widget(Label(text="Pikemen:"))
-        self.pikemen1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.pikemen1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.pikemen1)
 
         self.add_widget(Label(text="Pikemen:"))
-        self.pikemen2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.pikemen2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.pikemen2)
 
         self.add_widget(Label(text="Calvary:"))
-        self.calvary1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.calvary1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.calvary1)
 
         self.add_widget(Label(text="Calvary:"))
-        self.calvary2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.calvary2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.calvary2)
 
         self.add_widget(Label(text="Knights:"))
-        self.knights1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.knights1 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.knights1)
 
         self.add_widget(Label(text="Knights:"))
-        self.knights2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False)
+        self.knights2 = TextInput(background_normal=("textinput.png"), background_active=("textinput.png"), text="", multiline=False, padding=(14,40,0,1), cursor_color=(.76,.76,.76,1), foreground_color=[1,1,1,1])
         self.add_widget(self.knights2)
 
         self.layout = BoxLayout(orientation="vertical")
         self.add_widget(self.layout)
-        self.submit = Button(background_normal=("button.png"), background_down=("buttonactive.png"), text="[color=363840]Submit[/color]", markup=True, size_hint=(4, 1), font_size=20)
+        self.submit = Button(background_normal=("button.png"), background_down=("buttonactive.png"), text="[color=d7dade]Submit[/color]", markup=True, size_hint=(4, 1), font_size=20)
         self.layout.add_widget(self.submit)
         self.submit.bind(on_press=self.submit_button)
 
@@ -182,6 +184,21 @@ class BattleInputs(GridLayout):
             army1kcas = random.randint(1,int(basecas1))
             army1totalcas = army1fcas + army1acas + army1ccas + army1pcas + army1kcas
             army1rem = army1total - army1totalcas
+
+            if army1fcas > f1:
+                army1fcas = f1
+            if army1acas > a1:
+                army1acas = a1
+            if army1ccas > c1:
+                army1ccas = c1
+            if army1pcas > p1:
+                army1pcas = p1
+            if army1kcas > k1:
+                army1kcas = k1
+
+            army1totalcas = army1fcas + army1acas + army1ccas + army1pcas + army1kcas
+            army1rem = army1total - army1totalcas
+
             if army1rem > 0:
                 pass
             elif army1rem == 0:
@@ -195,8 +212,21 @@ class BattleInputs(GridLayout):
             army2ccas = random.randint(1,int(basecas2))
             army2pcas = random.randint(1,int(basecas2))
             army2kcas = random.randint(1,int(basecas2))
+
+            if army2fcas > f2:
+                army2fcas = f2
+            if army2acas > a2:
+                army2acas = a2
+            if army2ccas > c2:
+                army2ccas = c2
+            if army2pcas > p2:
+                army2pcas = p2
+            if army2kcas > k2:
+                army2kcas = k2
+
             army2totalcas = army2fcas + army2acas + army2ccas + army2pcas + army2kcas
             army2rem = army2total - army2totalcas
+
             if army2rem > 0:
                 pass
             elif army2rem == 0:
@@ -212,7 +242,7 @@ class BattleInputs(GridLayout):
         #winMessage = ""
 
         if winningScore > advTotal2:
-            winMessage = ("""Army 1 ({24}) Is Victorious With {0} Casualties and {1} Troops Remaining.
+            winMessage = ("""{24} Is Victorious With {0} Casualties and {1} Troops Remaining.
 Details On Army 1 Casualties:
 {2}: {3}
 {4}: {5}
@@ -220,17 +250,16 @@ Details On Army 1 Casualties:
 {8}: {9}
 {10}: {11}
 
-Army 2 ({25}) Have {12} Casualties And Have {13} Troops Remaining.
+{25} Have {12} Casualties And Have {13} Troops Remaining.
 Details On Army 2 Casualties:
 {14}: {15}
 {16}: {17}
 {18}: {19}
 {20}: {21}
-{22}: {23}
-            """).format(army1totalcas, army1rem, "Archers", army1fcas, "Swordsmen", army1acas, "Pikemen", army1ccas, "Calvary", army1pcas, "Knights", army1kcas, army2totalcas, army2rem, "Archers", army2fcas, "Swordsmen", army2acas, "Pikemen", army2ccas, "Calvary", army2pcas, "Knights", army2kcas, "Army 1", "Army 2")
+{22}: {23}""").format(army1totalcas, army1rem, "Archers", army1fcas, "Swordsmen", army1acas, "Pikemen", army1ccas, "Calvary", army1pcas, "Knights", army1kcas, army2totalcas, army2rem, "Archers", army2fcas, "Swordsmen", army2acas, "Pikemen", army2ccas, "Calvary", army2pcas, "Knights", army2kcas, "Army 1", "Army 2")
             bm.battle_outcomes.update_info(winMessage)
         elif winningScore < advTotal2:
-            winMessage = ("""Army 1 ({24}) Have {0} Casualties and {1} Troops Remaining.
+            winMessage = ("""{24} Have {0} Casualties and {1} Troops Remaining.
 Details On Army 1 Casualties:
 {2}: {3}
 {4}: {5}
@@ -238,17 +267,16 @@ Details On Army 1 Casualties:
 {8}: {9}
 {10}: {11}
 
-Army 2 ({25}) Is Victorious With {12} Casualties And Have {13} Troops Remaining.
+{25} Is Victorious With {12} Casualties And Have {13} Troops Remaining.
 Details On Army 2 Casualties:
 {14}: {15}
 {16}: {17}
 {18}: {19}
 {20}: {21}
-{22}: {23}
-            """).format(army1totalcas, army1rem, "Archers", army1fcas, "Swordsmen", army1acas, "Pikemen", army1ccas, "Calvary", army1pcas, "Knights", army1kcas, army2totalcas, army2rem, "Archers", army2fcas, "Swordsmen", army2acas, "Pikemen", army2ccas, "Calvary", army2pcas, "Knights", army2kcas, "Army 1", "Army 2")
+{22}: {23}""").format(army1totalcas, army1rem, "Archers", army1fcas, "Swordsmen", army1acas, "Pikemen", army1ccas, "Calvary", army1pcas, "Knights", army1kcas, army2totalcas, army2rem, "Archers", army2fcas, "Swordsmen", army2acas, "Pikemen", army2ccas, "Calvary", army2pcas, "Knights", army2kcas, "Army 1", "Army 2")
             bm.battle_outcomes.update_info(winMessage)
         else:
-            winMessage = ("""Army 1 ({24}) Have {0} Casualties and Have {1} Troops Remaining.
+            winMessage = ("""{24} Have {0} Casualties and Have {1} Troops Remaining.
 Details On Army 1 Casualties:
 {2}: {3}
 {4}: {5}
@@ -256,7 +284,7 @@ Details On Army 1 Casualties:
 {8}: {9}
 {10}: {11}
 
-Army 2 ({25}) Have {12} Casualties And Have {13} Troops Remaining.
+{25} Have {12} Casualties And Have {13} Troops Remaining.
 Details On Army 2 Casualties:
 {14}: {15}
 {16}: {17}
@@ -264,8 +292,7 @@ Details On Army 2 Casualties:
 {20}: {21}
 {22}: {23}
 
-A Draw Has Been Reached
-            """).format(army1totalcas, army1rem, "Archers", army1fcas, "Swordsmen", army1acas, "Pikemen", army1ccas, "Calvary", army1pcas, "Knights", army1kcas, army2totalcas, army2rem, "Archers", army2fcas, "Swordsmen", army2acas, "Pikemen", army2ccas, "Calvary", army2pcas, "Knights", army2kcas, "Army 1", "Army 2")
+A Draw Has Been Reached""").format(army1totalcas, army1rem, "Archers", army1fcas, "Swordsmen", army1acas, "Pikemen", army1ccas, "Calvary", army1pcas, "Knights", army1kcas, army2totalcas, army2rem, "Archers", army2fcas, "Swordsmen", army2acas, "Pikemen", army2ccas, "Calvary", army2pcas, "Knights", army2kcas, "Army 1", "Army 2")
             bm.battle_outcomes.update_info(winMessage)
 
         bm.screen_manager.current = "Outcomes"
@@ -274,10 +301,20 @@ class BattleOutcome(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
+        #self.rows = 2
 
         self.message = Label(halign="center", valign="middle", font_size=20)
         self.message.text = winMessage
-        self.add_widget(self.message)   
+        self.add_widget(self.message)
+
+        #self.add_widget(Label(text=""))
+        #self.add_widget(Label(text=""))
+        #self.add_widget(Label(text=""))
+        #self.add_widget(Label(text=""))
+        #self.add_widget(Label(text=""))
+
+        #self.Back = Button(background_normal=("button.png"), background_down=("buttonactive.png"), text="[color=d7dade]Resubmit[/color]", markup=True, size_hint=(0, 0), font_size=20)
+        #self.add_widget(self.Back)
 
     def update_info(self, message):
         self.message.text = message
